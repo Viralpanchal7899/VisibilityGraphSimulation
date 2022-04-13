@@ -34,20 +34,23 @@ for i = 1:length(x1)
         p1_y = [y1(1,i) y2(1,m)];
         hold on
         plot(p1_x,p1_y,'r');
+        pause(.1)
     end
     for n = 1:length(x3)
         p2_x = [x1(1,i) x3(1,n)];
         p2_y = [y1(1,i) y3(1,n)];
         hold on 
         plot(p2_x,p2_y,'r');
+        pause(.1)
     end
-end
+end 
 for i = 1:length(x2)
     for m = 1:length(x3)
         p3_x = [x2(1,i) x3(1,m)];
         p3_y = [y2(1,i) y3(1,m)];
         hold on
         plot(p3_x,p3_y,'r');
+        pause(.1)
     end
 end
 
