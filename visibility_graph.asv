@@ -12,11 +12,11 @@ x1 = [1.5 3.5 3.5 1.5];
 y1 = [1 1 3 3];
 x2 = [3 5 5 3];
 y2 = [6.5 6.5 8.5 8.5];
-x3 = [6 8 8 6];
-y3 = [3 3 5 5];
+x3 = [6 6 8 8];
+y3 = [2 4 4 2];
 obstacles = [1.5 1 3.5 1 3.5 3 1.5 3;
              3 6.5 5 6.5 5 8.5 3 8.5;
-             6 3 8 3 8 5 6 5];
+             6 2 6 4 8 4 8 2];
          
 num_obstacles = size(obstacles,1);
 for i_obs = 1:num_obstacles
@@ -29,8 +29,8 @@ hold on
 % Declare the starting point and goal point
 x_s = 1;
 y_s = 8;
-x_g = 9;
-y_g = 0.5;
+x_g = 8;
+y_g = 1;
 hold on 
 plot(x_s,y_s,'*');
 plot(x_g,y_g,'d');
@@ -70,22 +70,9 @@ end
 
 % making edges from start-point to neigbouring vertices
 for i = 1:num_obstacles
-    for m = 1:2:7
-        if collision_check_segment(x_s,y_s,obstacles(i,m),obstacles(i,m+1),obstacles) == 0
-            hold on 
-            plot ([x_s obstacles(i,m)], [y_s obstacles(i,m+1)], 'b');
-        end
-    end
-end
-
-
-for i = 1:num_obstacles
-    for m = 1:2:7
-        if collision_check_segment(x_g,y_g,obstacles(i,m),obstacles(i,m+1),obstacles) == 0
-            hold on 
-            plot ([x_g obstacles(i,m)], [y_g obstacles(i,m+1)], 'g');
-        end
-    end
-end
+    if collision_check_segment(x_s,y_s,obstacles(i,1),obstacles(i,2),obstacles) == 0
+        hold on 
+        plot ([x_s y_s], [])
+        
     
         
