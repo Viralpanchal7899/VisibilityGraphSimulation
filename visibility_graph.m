@@ -107,5 +107,41 @@ for i = 1:num_obstacles
         pause(.1)
     end
 end
-    
+
+cl = zeros();
+cl(1,1) = x_s;
+cl(1,2) = y_s;
+cl_index = 1;
+ol_index = 1;
+open_list = zeros();
+while cl(size(cl,1),1)~= x_g && cl(size(cl,1),2) ~= y_g
+    open_list = zeros();
+    weight = zeros();
+%     clear open_list;
+%     clear weight;
+    if collision_check_segment(cl(cl_index,1),cl(cl_index,2),x_g,y_g,obstacles) == 0
+                cl(cl_index+1,1) = x_g;
+                cl(cl_index+1,2) = y_g;
+                break;
+    end
+    for j = 1:num_obstacles
+        for k = 1:2:7
+            if collision_check_segment(cl(cl_index,1),cl(cl_index,2),obstacles(j,k),obstacles(j,k+1),obstacles) == 0
+                open_list(ol_index,1) = obstacles(j,k);
+                open_list(ol_index,2) = obstacles(j,k+1);
+                weight(ol_index,1) = sqrt((obstacles(j,k) - cl(cl_index,1))^2 + ((obstacles(j,k+1)) - cl(cl_index,2))^2);
+                ol_index = ol_index + 1;
+            end
+        end
+    end
+    [min_dist,min_dist_idx] = min(weight);
+    cl_index = cl_index + 1;
+    cl(cl_index,1) = open_list(min_dist_idx,1);
+    cl(cl_index,2) = open_list(min_dist_idx,2);
+end
+
+hold on
+plot(cl(:,1),cl(:,2),'k','LineWidth',3);
+
+
         
