@@ -2,4 +2,5 @@
 
 - A* is implemented to search for a path from start to goal node.
 
+ ![](Success1.jpg)
  
