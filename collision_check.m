@@ -4,7 +4,7 @@
 % 'obstacles', which assumes the obstacles are rectangles whose vertices  
 % are arranged in the sequence used in the script generate_obstacles.m
 
-function collision_found = collision_check_segment(px1,py1,px2,py2,obstacles)
+function collision_found = collision_check(px1,py1,px2,py2,obstacles)
 
 % returning 1 indicates collision
 % returning 0 indicates no collision
